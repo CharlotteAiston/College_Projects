@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to GibJohn tutoring </h1>
+    <br><br><br>
+    <p>Here you will find learing resources, fun educational games and tests​</p>
+    <br><br>
+    <p>Gain as many points as you can to be first on the leaderboard</p>
+
+    <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('profile') }}">Profile</a></li>
+        <li><a href="{{ url_for('videos') }}">Videos</a></li>
+        <li><a href="{{ url_for('resources') }}">Reasources</a></li>
+        <li><a href="{{ url_for('games') }}">Games</a></li>
+    </ul>
+</body>
+</html>
