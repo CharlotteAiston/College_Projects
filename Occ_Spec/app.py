@@ -39,7 +39,7 @@ def login():
             if result:
                 return redirect(url_for('home'))
             else:
-                return "Your login credentials are incorrect"
+                return render_template("login.html", alert="Account not found. Please try again")
             
         except sqlite3.Error as e:
             print(f"Database error: {e}")
@@ -58,7 +58,7 @@ def signup():
         confirmPass = request.form['confirmPass']
 
         if password != confirmPass:
-            return "Your passwords dont match"
+            return render_template("register.html", alert="Passwords don't match. Please try again")
 
         else:
             try:
@@ -73,9 +73,10 @@ def signup():
                 conn.commit()
                 conn.close()
 
-                return "You account has been registered"
+                return render_template("register.html", alert="Account registered successfully. Please login")
+                
             except:
-               return redirect(url_for('register_error'))
+               return render_template("register.html", alert="Details entered have already been used. Please try again")
 
     return render_template('register.html')
 
