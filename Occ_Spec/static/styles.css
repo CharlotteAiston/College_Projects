@@ -1,4 +1,9 @@
-ul {
+.Title {
+  text-align: center;
+}
+
+/* nav bar */
+.navbar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -6,11 +11,11 @@ ul {
   background-color: #156082;
 }
 
-ul li {
+.navbar ul li {
   float: left;
 }
 
-ul li a {
+.navbar ul li a {
   display: block;
   color: white;
   text-align: center;
@@ -18,6 +23,45 @@ ul li a {
   text-decoration: none;
 }
 
-ul li a:hover {
+.navbar ul li a:hover {
   background-color: #0f455e;
+}
+
+/* home */
+.home_content {
+  padding-left: 4%;
+  padding-top: 10%;
+}
+
+.home_content p {
+  font-size: x-large;
+}
+
+/* profile */
+.user_profile {
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+
+.profile_pic {
+  padding: 20px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; 
+}
+
+.profile_content h2,
+.profile_content p {
+    margin: 0;
+    font-size: x-large;
+}
+
+.leaderboard {
+  padding-left: 20px;
+}
+
+.leaderboard table {
+  width: 30%;
+  font-size: large;
 }

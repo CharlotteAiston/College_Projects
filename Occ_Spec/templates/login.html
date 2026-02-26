@@ -23,5 +23,12 @@
         <br><br>
         <a href="{{ url_for('signup') }}">Don't have an account? Register <ins>here</ins></a>
     </form>
+
+    {% if alert_message %}
+        <script>
+            alert("{{ alert_message }}");
+        </script>
+    {% endif %}
+    
 </body>
 </html>

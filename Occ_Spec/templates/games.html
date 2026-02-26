@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Games</title>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('profile') }}">Profile</a></li>
+            <li><a href="{{ url_for('videos') }}">Videos</a></li>
+            <li><a href="{{ url_for('resources') }}">Reasources</a></li>
+            <li><a href="{{ url_for('games') }}">Games</a></li>
+            <li style="float: right;"><a href="{{ url_for('settings') }}">Settings</a></li>
+        </ul>  
+    </div>
+
+    <h1 class="Title">Choose a topic to see related material</h1>
+
+    <ul>
+        <li><a href="{{ url_for('crosswords') }}">Crosswords</a></li>
+        <li><a href="{{ url_for('hangman') }}">Hangman</a></li>
+        <li><a href="{{ url_for('bingo') }}">Bingo</a></li>
+        <li><a href="https://create.kahoot.it/discover?language=en">Kahoot!</a></li>
+    </ul>
+
+</body>
+</html>

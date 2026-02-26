@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Profile</title>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('profile') }}">Profile</a></li>
+            <li><a href="{{ url_for('videos') }}">Videos</a></li>
+            <li><a href="{{ url_for('resources') }}">Reasources</a></li>
+            <li><a href="{{ url_for('games') }}">Games</a></li>
+            <li style="float: right;"><a href="{{ url_for('settings') }}">Settings</a></li>
+        </ul>  
+    </div>
+
+    <div class="user_profile">
+        <img class="profile_pic" alt="Profile Picture" src="{{ url_for('static', filename='images/profile_pic.png')}}">
+    
+        <div class="profile_content">
+        <p>{{ fullName }}</p>
+        <br>
+        <p>Points: {{ points }}</p>
+        </div>
+    </div>
+
+    <div class="leaderboard">
+        <h1>Leaderboard</h1>
+
+        <table border="1">
+            <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Points</th>
+            </tr>
+
+            {% for user in users %}
+            <tr {% if user['Username'] == current_user %} style="background-color: #15608274;" {% endif %}>
+                <td>{{ loop.index }}</td>
+                <td>{{ user['Username'] }}</td>
+                <td>{{ user['Points'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</body>
+</html>

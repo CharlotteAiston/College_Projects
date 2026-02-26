@@ -24,6 +24,8 @@
         <input type="password" name="confirmPass" required>
         <br><br>        
         <input type="submit" name="signup" required>
+        <br><br>
+        <a href="{{ url_for('login') }}">Already have an account? Login <ins>here</ins></a>
     </form>
     
     {% if alert_message %}

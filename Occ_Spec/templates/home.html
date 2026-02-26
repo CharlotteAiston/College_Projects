@@ -7,18 +7,24 @@
     <title>Home</title>
 </head>
 <body>
-    <ul>
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('profile') }}">Profile</a></li>
-        <li><a href="{{ url_for('videos') }}">Videos</a></li>
-        <li><a href="{{ url_for('resources') }}">Reasources</a></li>
-        <li><a href="{{ url_for('games') }}">Games</a></li>
-    </ul>
+    <div class="navbar">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('profile') }}">Profile</a></li>
+            <li><a href="{{ url_for('videos') }}">Videos</a></li>
+            <li><a href="{{ url_for('resources') }}">Reasources</a></li>
+            <li><a href="{{ url_for('games') }}">Games</a></li>
+            <li style="float: right;"><a href="{{ url_for('settings') }}">Settings</a></li>
+        </ul>  
+    </div>
+    
 
-    <h1>Welcome to GibJohn tutoring </h1>
-    <br><br><br>
-    <p>Here you will find learning resources, fun educational games and tests</p>
-    <br><br>
-    <p>Gain as many points as you can to be first on the leaderboard</p>
+    <div class="home_content">
+        <h1>Welcome to GibJohn tutoring </h1>
+        <br><br><br>
+        <p>Here you will find learning resources, tests and fun educational games </p>
+        <br><br>
+        <p>Gain as many points as you can to be first on the leaderboard</p>
+    </div>
 </body>
 </html>
