@@ -65,3 +65,23 @@
   width: 30%;
   font-size: large;
 }
+
+/* flashcards */
+.flashcard_box {
+  margin-left: 15%;
+  margin-right: 15%;
+  text-align: center;
+  outline: 2px solid black;
+  font-size: large;
+} 
+
+.flashcard_content {
+  padding-top: 2%;
+}
+
+.flashcard_buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2%;
+}

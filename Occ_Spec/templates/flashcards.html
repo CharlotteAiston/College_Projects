@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>Videos</title>
+    <title>Flashcards</title>
 </head>
 <body>
     <div class="navbar">
@@ -18,7 +18,18 @@
         </ul>  
     </div>
 
-
+    <div class="flashcard_content">
+        <div class="flashcard_box">
+            <p style="padding: 12%;">Question</p>
+            <p style="padding-top: 10%; padding-bottom: 0%;">Click to show answer</p>
+        </div>
+        <div class="flashcard_buttons">
+            <button style="margin: 10px;" type="button">Previous</button>
+            <button style="margin: 10px;" type="button">Bad</button>
+            <button style="margin: 10px;" type="button">Good</button>
+            <button style="margin: 10px;" type="button">Next</button>
+        </div>
+    </div>
 
 </body>
 </html>

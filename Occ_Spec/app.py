@@ -1,8 +1,9 @@
 from flask import *
 import sqlite3 
+import hashlib
 
 def create_db():
-    conn = sqlite3.connect("/workspaces/College_Projects/Occ_Spec/account_database.db")
+    conn = sqlite3.connect("/workspaces/College_Projects/Occ_Spec/database.db")
     cur = conn.cursor()
 
     cur.execute("""
@@ -61,10 +62,12 @@ def login():
         password = request.form['password']
 
         try:
-            conn = sqlite3.connect("/workspaces/College_Projects/Occ_Spec/account_database.db")
+            hashed_pass = hashlib.sha256(password.encode()).hexdigest()
+
+            conn = sqlite3.connect("/workspaces/College_Projects/Occ_Spec/database.db")
             cur = conn.cursor()
 
-            cur.execute("SELECT * FROM users WHERE username = ? AND email = ? AND password = ?", (username, email, password))
+            cur.execute("SELECT * FROM users WHERE username = ? AND email = ? AND password = ?", (username, email, hashed_pass))
             result = cur.fetchone()
 
             conn.close()
@@ -75,7 +78,7 @@ def login():
                 session['points'] = result[5]
                 return redirect(url_for('home'))
             else:
-                return render_template("login.html", alert_message="Account not found. Please try again")
+                return render_template("login.html", alert_message="Incorrect details. Please try again")
             
         except:
             return render_template("login.html", alert_message="Database error. Please try again")
@@ -101,13 +104,15 @@ def signup():
                 return render_template("register.html", alert_message="Password must be between 8 and 20 characters, have at least one upper case and lowercase character and include one of the following $, @, #, %, !.")
             else:
                 try:
-                    conn = sqlite3.connect("/workspaces/College_Projects/Occ_Spec/account_database.db")
+                    hashed_pass = hashlib.sha256(password.encode()).hexdigest()
+
+                    conn = sqlite3.connect("/workspaces/College_Projects/Occ_Spec/database.db")
                     cur = conn.cursor()
 
                     cur.execute("""
                         INSERT INTO users (Username, UserFullName, Email, Password)
                         VALUES (?, ?, ?, ?)
-                    """, (username, fullName, email, password))
+                    """, (username, fullName, email, hashed_pass))
 
                     conn.commit()
                     conn.close()
@@ -128,21 +133,13 @@ def forgotPass():
 def home():
     return render_template('home.html')
 
-@app.route('/login_error', methods = ['GET', 'POST'])
-def login_error():
-    return render_template('login_error.html')
-
-@app.route('/register_error', methods = ['GET', 'POST'])
-def register_error():
-    return render_template('register_error.html')
-
 @app.route('/profile', methods = ['GET', 'POST'])
 def profile():
     fullName = session.get('fullName')
     points = session.get('points')
     current_user = session.get('username')
 
-    conn = sqlite3.connect("/workspaces/College_Projects/Occ_Spec/account_database.db")
+    conn = sqlite3.connect("/workspaces/College_Projects/Occ_Spec/database.db")
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
 
@@ -192,27 +189,27 @@ def resources():
 
 @app.route('/quizzes', methods = ['GET', 'POST'])
 def quizzes():
-    return render_template('resources.html')
+    return render_template('quizz.html')
 
 @app.route('/readingMaterial', methods = ['GET', 'POST'])
 def reading_material():
-    return render_template('resources.html')
+    return render_template('documents.html')
 
 @app.route('/notes', methods = ['GET', 'POST'])
 def notes():
-    return render_template('resources.html')
+    return render_template('documents.html')
 
 @app.route('/worksheets', methods = ['GET', 'POST'])
 def worksheets():
-    return render_template('resources.html')
+    return render_template('documents.html')
 
 @app.route('/flashcards', methods = ['GET', 'POST'])
 def flashcards():
-    return render_template('resources.html')
+    return render_template('flashcards.html')
 
 @app.route('/presentations', methods = ['GET', 'POST'])
 def presentations():
-    return render_template('resources.html')
+    return render_template('presentation.html')
 
 @app.route('/games', methods = ['GET', 'POST'])
 def games():
